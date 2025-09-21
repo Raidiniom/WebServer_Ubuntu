@@ -90,8 +90,7 @@ sudo ln -s /etc/nginx/sites-available/sysadweb /etc/nginx/sites-enabled/
 sudo nginx -t
 sudo systemctl reload nginx
 ```
-
-	## Accessing the Website 
+## Accessing the Website 
 From your host PC, open:
 
 Open this site :
