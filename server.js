@@ -26,7 +26,7 @@ app.use(
 
 // Routes
 app.use("/auth", authRoutes);
-app.use("/", dashboardRoutes);
+app.use("/dashboard", dashboardRoutes);
 
 // Start server
 app.listen(PORT, () => {
