@@ -1,14 +1,256 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Register</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SysAd Web Server - Register</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #e0f7ff 0%, #ffe6f2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .site-body {
+            max-width: 900px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(173, 216, 230, 0.4);
+            overflow: hidden;
+        }
+        
+        .site-header {
+            background: linear-gradient(120deg, #89CFF0 0%, #F4ACB7 100%);
+            padding: 40px;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        
+        .site-title {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .site-desc {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .site-content {
+            padding: 40px;
+        }
+        
+        .section-title {
+            text-align: center;
+            color: #6A7B8B;
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(to right, #89CFF0, #F4ACB7);
+            margin: 10px auto;
+            border-radius: 2px;
+        }
+        
+        .auth-form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #6A7B8B;
+            font-weight: 500;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #89CFF0;
+            box-shadow: 0 0 0 3px rgba(137, 207, 240, 0.3);
+        }
+        
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #89CFF0 0%, #F4ACB7 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(137, 207, 240, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(137, 207, 240, 0.5);
+        }
+        
+        .auth-links {
+            text-align: center;
+            margin-top: 25px;
+        }
+        
+        .auth-links a {
+            color: #89CFF0;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            margin: 0 10px;
+        }
+        
+        .auth-links a:hover {
+            color: #F4ACB7;
+            text-decoration: underline;
+        }
+        
+        .server-info {
+            background-color: #F8F9FA;
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 40px;
+            border-left: 5px solid #89CFF0;
+        }
+        
+        .server-info h3 {
+            color: #6A7B8B;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .server-info h3 i {
+            margin-right: 10px;
+            color: #F4ACB7;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .info-item {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .info-item h4 {
+            color: #6A7B8B;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+        }
+        
+        .info-item p {
+            color: #4A5568;
+            font-weight: 600;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #6A7B8B;
+            font-size: 0.9rem;
+            border-top: 1px solid #EDF2F7;
+        }
+        
+        @media (max-width: 768px) {
+            .site-header {
+                padding: 30px 20px;
+            }
+            
+            .site-title {
+                font-size: 2.2rem;
+            }
+            
+            .site-content {
+                padding: 30px 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .site-title {
+                font-size: 1.8rem;
+            }
+            
+            .site-desc {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <h1>Register</h1>
-  <form action="/auth/register" method="POST">
-    <input type="text" name="username" placeholder="Username" required /><br>
-    <input type="password" name="password" placeholder="Password" required /><br>
-    <button type="submit">Register</button>
-  </form>
+    <div class="site-body">
+        <div class="site-header">
+            <h1 class="site-title">SysAd Web Server</h1>
+            <p class="site-desc">Welcome to the Web Server, please take your time</p>
+        </div>
+
+        <div class="site-content">
+            <h2 class="section-title">Register</h2>
+            
+            <form class="auth-form" action="/auth/register" method="POST">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" placeholder="Enter your username" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+                
+                <button type="submit" class="btn">Register</button>
+              </form>
+        <div class="footer">
+            <p>© 2023 SysAd Web Server | Designed with Vibe Code <i class="fas fa-heart" style="color: #F4ACB7;"></i></p>
+        </div>
+    </div>
 </body>
 </html>
