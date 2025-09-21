@@ -9,7 +9,7 @@ function isAuthenticated(req, res, next) {
     }
 }
 
-router.get("/dashboard", isAuthenticated, (req, res) => {
+router.get("/", isAuthenticated, (req, res) => {
     res.redirect("/dashboard");
 });
 
