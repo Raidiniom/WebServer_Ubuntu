@@ -24,7 +24,7 @@ app.use(
 )
 
 // Routes
-app.use("/", authRoutes);
+app.use("/auth", authRoutes);
 app.use("/", dashboardRoutes);
 
 // Start server
