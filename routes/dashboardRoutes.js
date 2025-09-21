@@ -10,7 +10,7 @@ function isAuthenticated(req, res, next) {
 }
 
 router.get("/dashboard", isAuthenticated, (req, res) => {
-    res.send(`Welcome, ${req.session.user.username}`);
+    res.redirect("/dashboard");
 });
 
 module.exports = router;
