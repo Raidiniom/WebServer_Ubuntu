@@ -2,6 +2,10 @@ const express = require("express");
 const path = require("path");
 const dotenv = require("dotenv");
 
+const authRoutes = require("./routes/auth");
+const dashboardRoutes = require("./routes/dashboardRoutes");
+const session = require("express-session");
+
 dotenv.config();
 
 const app = express();
@@ -11,10 +15,17 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
+app.use(
+  session({
+    secret: "themissileknowswhereitistowhereitisnt",
+    resave: false,
+    saveUninitialized: false,
+  })
+)
 
 // Routes
-const authRoutes = require("./routes/auth");
 app.use("/auth", authRoutes);
+app.use("/dashboard", dashboardRoutes);
 
 // Start server
 app.listen(PORT, () => {

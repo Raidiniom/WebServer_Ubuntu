@@ -11,6 +11,7 @@ async function register(req, res) {
       [username, hashedPassword]
     );
     res.send("User registered successfully!");
+    res.redirect("/login")
   } catch (err) {
     console.error(err);
     res.status(500).send("Error registering user.");
@@ -33,8 +34,10 @@ async function login(req, res) {
     if (!validPassword) {
       return res.status(400).send("Invalid password.");
     }
+    
+    req.session.user = { id: user.id, username: user.username };
 
-    res.send("Login successful!");
+    res.redirect("/dashboard")
   } catch (err) {
     console.error(err);
     res.status(500).send("Error logging in.");
