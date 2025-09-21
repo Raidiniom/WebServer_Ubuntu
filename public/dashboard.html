@@ -3,7 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SysAd</title>
+    <title>SysAd Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #e0f7ff 0%, #ffe6f2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .site-body {
+            max-width: 900px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(173, 216, 230, 0.4);
+            overflow: hidden;
+        }
+        
+        .site-header {
+            background: linear-gradient(120deg, #89CFF0 0%, #F4ACB7 100%);
+            padding: 40px;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        
+        .site-title {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .site-content {
+            padding: 40px;
+        }
+        
+        .site-footer {
+            text-align: center;
+            padding: 20px;
+            color: #6A7B8B;
+            font-size: 0.9rem;
+            border-top: 1px solid #EDF2F7;
+        }
+        
+        @media (max-width: 768px) {
+            .site-header {
+                padding: 30px 20px;
+            }
+            
+            .site-title {
+                font-size: 2.2rem;
+            }
+            
+            .site-content {
+                padding: 30px 20px;
+            }
+            
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .site-title {
+                font-size: 1.8rem;
+            }
+            
+            .welcome-message {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="site-body">
