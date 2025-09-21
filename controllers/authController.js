@@ -10,7 +10,7 @@ async function register(req, res) {
       "INSERT INTO users (username, password) VALUES ($1, $2)",
       [username, hashedPassword]
     );
-    res.redirect("/login")
+    res.redirect("/auth/login")
   } catch (err) {
     console.error(err);
     res.status(500).send("Error registering user.");
