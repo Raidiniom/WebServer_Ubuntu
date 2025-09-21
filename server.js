@@ -20,12 +20,13 @@ app.use(
     secret: "themissileknowswhereitistowhereitisnt",
     resave: false,
     saveUninitialized: false,
+    cookie: { secure: false },
   })
 )
 
 // Routes
 app.use("/auth", authRoutes);
-app.use("/dashboard", dashboardRoutes);
+app.use("/", dashboardRoutes);
 
 // Start server
 app.listen(PORT, () => {
